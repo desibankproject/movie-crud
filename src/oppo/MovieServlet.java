@@ -1,13 +1,13 @@
 package oppo;
 
 import java.io.IOException;
+import java.sql.*;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import java.util.*;
 
 @WebServlet("/movieServlet")
 public class MovieServlet extends HttpServlet {
@@ -23,6 +23,34 @@ public class MovieServlet extends HttpServlet {
 			String language=request.getParameter("language");
 			String story=request.getParameter("story");
 			String poster=request.getParameter("poster");
+			//Write Java code to insert data into the database
+			//Step-1 >>>Write SQL query
+			 String query="insert into movie_tbl values(?,?,?,?,?,?)";
+			 try {
+				   //Step-1 -- loading the driver
+				   Class.forName("com.mysql.jdbc.Driver");
+				   	//Making connection
+				   //connection url = jdbc:mysql://localhost:3306/movies_db 
+				   //dbusername = root
+				   //dbpassword = mysql@1234
+				   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/movies_db","root","mysql@1234");
+				   //pstmt holds compiled query
+				   PreparedStatement pstmt=conn.prepareStatement(query);
+				 
+				   //setting data inside the query
+				   pstmt.setString(1, title);
+				   pstmt.setString(2, director);
+				   pstmt.setInt(3,2018);
+				   pstmt.setString(4, story);
+				   pstmt.setString(5, poster);
+				   pstmt.setString(6, language);
+				   
+				   //Fire the query
+				   pstmt.executeUpdate();
+				 
+			 }catch(Exception supriya){
+				 supriya.printStackTrace();
+			 }
 			//Here we are creating an object and storing data inside it....
 			//in below movie object we have our all the data which is coming from html page
 			Movie movie=new Movie(title,year,director,language,story,poster);
