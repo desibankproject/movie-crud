@@ -15,9 +15,11 @@
 
 </header>
 <div class="container">
-	  <h2>Movie Data!</h2>
+	  <h2>Movie Data!  =>>EL =Expression Language</h2>
   <img src="img/movie.jpg" class="img-thumbnail" style="height: 100px;">
-  	<br/> 	<br/> 	<br/> 
+  <br/>
+   Email :  <b>${initParam.email}</b>
+  	 	<br/> 	<br/> 
   <table class="table table-bordered">
     <thead>
       <tr>
@@ -49,6 +51,8 @@
      <% } %>
     </tbody>
   </table>
+    <br/>
+   
   <a href="movie.htm"><button type="button" class="btn btn-danger">Add Record!</button></a>
 
 </div>

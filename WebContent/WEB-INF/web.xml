@@ -4,4 +4,17 @@
   <welcome-file-list>
     <welcome-file>movie.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- Below data will go inside application scope!!! -->
+    <context-param>
+    		<param-name>email</param-name>
+    		<param-value>nagen@gmail.com</param-value>
+    </context-param>
+    
+      <context-param>
+    		<param-name>phone</param-name>
+    		<param-value>+91828237376</param-value>
+    </context-param>
+  
+  
 </web-app>

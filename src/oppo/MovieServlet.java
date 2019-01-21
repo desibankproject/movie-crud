@@ -2,6 +2,7 @@ package oppo;
 
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,42 +24,15 @@ public class MovieServlet extends HttpServlet {
 			String language=request.getParameter("language");
 			String story=request.getParameter("story");
 			String poster=request.getParameter("poster");
-			//Write Java code to insert data into the database
-			//Step-1 >>>Write SQL query
-			 String query="insert into movie_tbl values(?,?,?,?,?,?)";
-			 try {
-				   //Step-1 -- loading the driver
-				   Class.forName("com.mysql.jdbc.Driver");
-				   	//Making connection
-				   //connection url = jdbc:mysql://localhost:3306/movies_db 
-				   //dbusername = root
-				   //dbpassword = mysql@1234
-				   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/movies_db","root","mysql@1234");
-				   //pstmt holds compiled query
-				   PreparedStatement pstmt=conn.prepareStatement(query);
-				 
-				   //setting data inside the query
-				   pstmt.setString(1, title);
-				   pstmt.setString(2, director);
-				   pstmt.setInt(3,2018);
-				   pstmt.setString(4, story);
-				   pstmt.setString(5, poster);
-				   pstmt.setString(6, language);
-				   
-				   //Fire the query
-				   pstmt.executeUpdate();
-				 
-			 }catch(Exception supriya){
-				 supriya.printStackTrace();
-			 }
+			Movie smovie=new Movie(title,year+"",director,language,story,poster);
+			
+			MovieData.addMovie(smovie);
 			//Here we are creating an object and storing data inside it....
 			//in below movie object we have our all the data which is coming from html page
-			Movie movie=new Movie(title,year,director,language,story,poster);
-			MovieData.movies.add(movie);
+			 ArrayList<Movie>  movies=MovieData.loadMovieData();
 			//After sometime we will write code to persist this data into the database
 			//here we are adding movie object inside request object using name =pdata
-			request.setAttribute("pdata", MovieData.movies);
-			
+			request.setAttribute("pdata", movies);
 			request.getRequestDispatcher("movie.jsp").forward(request,response);
 	}
 
