@@ -25,7 +25,6 @@ public class MovieServlet extends HttpServlet {
 			String story=request.getParameter("story");
 			String poster=request.getParameter("poster");
 			Movie smovie=new Movie(title,year+"",director,language,story,poster);
-			
 			MovieData.addMovie(smovie);
 			//Here we are creating an object and storing data inside it....
 			//in below movie object we have our all the data which is coming from html page

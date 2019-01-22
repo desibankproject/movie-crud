@@ -22,8 +22,6 @@ public class DeleteMovieServlet extends HttpServlet {
 	   
 		//Below method will delete data from database as per title coming from GUI
 		MovieData.deleteMovieByTitle(title);
-		
-		
 		//Here write logic to delete data from ArrayList by title
 		ArrayList<Movie> movies=MovieData.loadMovieData();
 		/*for(Movie tea:movies) {

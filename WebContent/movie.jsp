@@ -19,7 +19,14 @@
   <img src="img/movie.jpg" class="img-thumbnail" style="height: 100px;">
   <br/>
    Email :  <b>${initParam.email}</b>
-  	 	<br/> 	<br/> 
+  	<br/>
+  	
+  	Message :  <b>${applicationScope.message}</b>
+  	<br/> 	
+  	 	  	MName :  <b>${applicationScope.mname}</b>
+  	<br/> 	
+  	 	
+  	 	<br/> 
   <table class="table table-bordered">
     <thead>
       <tr>
