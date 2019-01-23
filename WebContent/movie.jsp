@@ -24,8 +24,20 @@
   	Message :  <b>${applicationScope.message}</b>
   	<br/> 	
   	 	  	MName :  <b>${applicationScope.mname}</b>
-  	<br/> 	
-  	 	
+  	<br/> 		<br/> 	
+
+		      <form action="filterMovie" method="get">
+			  	 		Language :
+						<select name="language"  class="form-control" style="width: 50%;background-color: buttonface;display: inline;margin-right: 30px;">
+						<option>Select</option>
+						<option>All</option>
+								<option>English</option>
+								<option>Hindi</option>
+									<option>Russian</option>
+						</select>
+					<button type="submit" class="btn btn-primary">Filter</button>
+		</form>
+
   	 	<br/> 
   <table class="table table-bordered">
     <thead>
