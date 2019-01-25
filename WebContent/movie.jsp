@@ -63,7 +63,9 @@
         <td><%=mt.getLanguage() %></td>
            <td><%=mt.getStory() %></td>
            <td>
-           <img src="<%=mt.getPoster() %>" style="height: 150px;" class="img-thumbnail" >
+         <%--   <img src="<%=mt.getPoster() %>" style="height: 150px;" class="img-thumbnail" > --%>
+         
+          <img src="loadImage?title=<%=mt.getTitle() %>" style="height: 150px;" class="img-thumbnail" >
             <a href="deleteMovie?title=<%=mt.getTitle() %>"> <img src="img/delete.jfif" class="img-thumbnail" style="height: 100px;"></a>
            </td>
       </tr>

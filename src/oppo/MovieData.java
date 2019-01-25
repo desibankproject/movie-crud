@@ -1,10 +1,13 @@
 package oppo;
 
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
+import javax.sql.rowset.serial.SerialBlob;
 
 public class MovieData {
 	
@@ -30,7 +33,7 @@ public class MovieData {
 	public static void addMovie(Movie movie){
 		//Write Java code to insert data into the database
 		//Step-1 >>>Write SQL query
-		 String query="insert into movie_tbl values(?,?,?,?,?,?)";
+		 String query="insert into movie_tbl values(?,?,?,?,?,?,?)";
 		 try {
 			   //Step-1 -- loading the driver
 			   Class.forName("com.mysql.jdbc.Driver");
@@ -39,7 +42,6 @@ public class MovieData {
 			   //dbusername = root
 			   //dbpassword = mysql@1234
 			   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/movies_db","root","mysql@1234");
-			   
 			   //pstmt holds compiled query
 			   PreparedStatement pstmt=conn.prepareStatement(query);
 			   //setting data inside the query
@@ -47,8 +49,11 @@ public class MovieData {
 			   pstmt.setString(2, movie.getDirector());
 			   pstmt.setInt(3,Integer.parseInt(movie.getYear()));
 			   pstmt.setString(4, movie.getStory());
-			   pstmt.setString(5, movie.getPoster());
+			   pstmt.setString(5, "No more in use");
 			   pstmt.setString(6, movie.getLanguage());
+			   //Creating Blob with byte[]
+			   Blob blob = new SerialBlob(movie.getPhoto() );
+			   pstmt.setBlob(7,blob);
 			   //Fire the query
 			   pstmt.executeUpdate();
 			 

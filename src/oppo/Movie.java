@@ -8,6 +8,8 @@ public class Movie {
 	private String story;
 	private String poster;
 	
+	//This is used to store image in Java Object
+	private byte[] photo;
 	
 	public Movie() {
 		
@@ -23,6 +25,14 @@ public class Movie {
 	}
 	
 	
+
+	public byte[] getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(byte[] photo) {
+		this.photo = photo;
+	}
 
 	public String getPoster() {
 		return poster;
