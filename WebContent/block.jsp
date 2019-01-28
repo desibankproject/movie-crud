@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+<%@include file="header.jsp" %>
    <h2>WOOOOOOOOOIEEEEEEEEEEEEEEEEEEEEEEEE
    <img src="img/block.jpg" height="500px"/>
    <br/>

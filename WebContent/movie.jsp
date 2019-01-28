@@ -11,9 +11,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </head>
 <body >
-<header style="background-color: #062f6d;height:30px;">
 
-</header>
+<%@include file="header.jsp" %>
+
 <div class="container">
 	  <h2>Movie Data!  =>>EL =Expression Language</h2>
   <img src="img/movie.jpg" class="img-thumbnail" style="height: 100px;">
