@@ -1,5 +1,5 @@
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<%@page import="java.util.ArrayList"%>
 <html lang="en">
 <head>
   <title>Home Page</title>
@@ -43,7 +43,7 @@
         <th>Dollar</th>
     </thead>
     <tbody>
-    <%
+<%--     <%
     //request.setAttribute("pdata", movies);
    ArrayList<Integer> dollarList= (ArrayList<Integer>)session.getAttribute("sbags");
    if(dollarList==null){
@@ -51,12 +51,19 @@
    }
    int count=1;
     for(Integer t : dollarList) {
-    	 %>
-      <tr>
-        <td><%=count++%></td>
-      <td><%=t %></td>
-      </tr>
-     <% } %>
+    	 %> --%>
+    	 
+    <c:forEach items="${sbags}"  var="t" varStatus="navdeep">	 
+		      <tr 
+		      	 <c:if test="${t>50}">
+		          style="background-color: yellow;"
+		        </c:if>
+		      >
+		        <td>${navdeep.count}</td>
+		      <td>${t}</td>
+		      </tr>
+      </c:forEach>
+<%--      <% } %> --%>
     </tbody>
   </table>
 </div>
