@@ -22,14 +22,14 @@ import javax.servlet.http.HttpServletResponse;
 public class LoadImageServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String mtitle=request.getParameter("title");
+		String mid=request.getParameter("mid");
 		try {
-				  String query="select photo from movie_tbl where title=?";
+				  String query="select photo from movie_tbl where mid=?";
 				   Class.forName("com.mysql.jdbc.Driver");
 				   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/movies_db","root","mysql@1234");
 				   //No need to set any input
 				   PreparedStatement pstmt=conn.prepareStatement(query);
-				   pstmt.setString(1, mtitle);
+				   pstmt.setInt(1, Integer.parseInt(mid));
 				   //we should use executeQuery to fetch data
 				  ResultSet rs= pstmt.executeQuery();
 				  byte [] bytes=null;

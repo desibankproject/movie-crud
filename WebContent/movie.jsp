@@ -65,8 +65,8 @@
            <td>
          <%--   <img src="<%=mt.getPoster() %>" style="height: 150px;" class="img-thumbnail" > --%>
          
-          <img src="loadImage?title=<%=mt.getTitle() %>" style="height: 150px;" class="img-thumbnail" >
-            <a href="deleteMovie?title=<%=mt.getTitle() %>"> <img src="img/delete.jfif" class="img-thumbnail" style="height: 100px;"></a>
+          <img src="loadImage?mid=<%=mt.getMid() %>" style="height: 150px;" class="img-thumbnail" >
+            <a href="deleteMovie?mid=<%=mt.getMid() %>"> <img src="img/delete.jfif" class="img-thumbnail" style="height: 100px;"></a>
            </td>
       </tr>
      <% } %>
@@ -74,7 +74,7 @@
   </table>
     <br/>
    
-  <a href="movie.htm"><button type="button" class="btn btn-danger">Add Record!</button></a>
+  <a href="umovie.htm"><button type="button" class="btn btn-danger">Add Record!</button></a>
 
 </div>
 </body>

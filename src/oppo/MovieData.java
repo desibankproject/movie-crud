@@ -11,10 +11,10 @@ import javax.sql.rowset.serial.SerialBlob;
 
 public class MovieData {
 	
-	public static void deleteMovieByTitle(String title) {
+	public static void deleteMovieByMid(int mid) {
 		//Write Java code to insert data into the database
 		//Step-1 >>>Write SQL query
-		 String query="delete from movie_tbl  where title=?";
+		 String query="delete from movie_tbl  where mid=?";
 		 try {
 			   //Step-1 -- loading the driver
 			   Class.forName("com.mysql.jdbc.Driver");
@@ -22,7 +22,7 @@ public class MovieData {
 			   //pstmt holds compiled query
 			   PreparedStatement pstmt=conn.prepareStatement(query);
 			   //setting data inside the query
-			   pstmt.setString(1, title);
+			   pstmt.setInt(1, mid);
 			   //Fire the query
 			   pstmt.executeUpdate();
 		 }catch(Exception supriya){
@@ -33,7 +33,7 @@ public class MovieData {
 	public static void addMovie(Movie movie){
 		//Write Java code to insert data into the database
 		//Step-1 >>>Write SQL query
-		 String query="insert into movie_tbl values(?,?,?,?,?,?,?)";
+		 String query="insert into movie_tbl(title,director,year,story,poster,language,photo) values(?,?,?,?,?,?,?)";
 		 try {
 			   //Step-1 -- loading the driver
 			   Class.forName("com.mysql.jdbc.Driver");
@@ -69,7 +69,7 @@ public class MovieData {
 		ArrayList<Movie>  movies=new ArrayList<Movie>();
 		///Here we have to write query to fetch data from database
 		try {
-					String query="select title,director,year,story,poster,language  from movie_tbl";
+					String query="select title,director,year,story,poster,language,mid  from movie_tbl";
 				   Class.forName("com.mysql.jdbc.Driver");
 				   Connection conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/movies_db","root","mysql@1234");
 				   //No need to set any input
@@ -83,7 +83,9 @@ public class MovieData {
 					  String story=rs.getString(4);
 					  String poster=rs.getString(5);
 					  String language=rs.getString(6);
+					  int mid=rs.getInt(7);
 					  Movie tmovie=new Movie(title,year+"",director,language,story,poster);
+					  tmovie.setMid(mid);
 					  movies.add(tmovie);
 				  }
 				   

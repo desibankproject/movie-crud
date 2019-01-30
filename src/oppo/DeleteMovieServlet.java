@@ -18,10 +18,10 @@ public class DeleteMovieServlet extends HttpServlet {
 
 	//if we call a servlet by hyperlink then we can use only GET method
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String title=request.getParameter("title");
+		String mid=request.getParameter("mid");
 	   
 		//Below method will delete data from database as per title coming from GUI
-		MovieData.deleteMovieByTitle(title);
+		MovieData.deleteMovieByMid(Integer.parseInt(mid));
 		//Here write logic to delete data from ArrayList by title
 		ArrayList<Movie> movies=MovieData.loadMovieData();
 		/*for(Movie tea:movies) {

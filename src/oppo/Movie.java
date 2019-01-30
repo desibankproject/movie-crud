@@ -1,13 +1,16 @@
 package oppo;
 
 public class Movie {
+	
+	private int mid;
 	private String title;
 	private String year;
 	private String director;
 	private String language;
 	private String story;
 	private String poster;
-	
+
+
 	//This is used to store image in Java Object
 	private byte[] photo;
 	
@@ -22,6 +25,14 @@ public class Movie {
 		this.language = language;
 		this.story = story;
 		this.poster = poster;
+	}
+	
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
 	}
 	
 	
